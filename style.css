@@ -175,28 +175,40 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .newsletter h2 em { color: var(--caramel); }
 .newsletter-copy p:last-child { margin: 0; max-width: 28em; }
 
-.signup { display: flex; flex-direction: column; gap: 18px; }
-.field { display: flex; flex-direction: column; gap: 6px; }
-.field label { font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--green-800); }
-.field input[type="text"], .field input[type="email"] {
+/* MailerLite form (markup from MailerLite, look from the Sucre Brûlé design) */
+.ml-subscribe-form .ml-form-embedBody form { display: flex; flex-direction: column; gap: 18px; margin: 0; }
+.ml-subscribe-form .ml-form-formContent { display: flex; flex-direction: column; gap: 18px; }
+.ml-subscribe-form .ml-field-group { display: flex; flex-direction: column; gap: 6px; text-align: left; }
+.ml-subscribe-form .ml-field-group label { font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--green-800); }
+.ml-subscribe-form .ml-field-group input {
   font: inherit; padding: 14px 16px; border-radius: 10px; border: 1px solid rgba(18,38,28,.35); background: #fffaf3; color: var(--ink); width: 100%;
 }
-.field input:focus { outline: 3px solid rgba(47,106,77,.35); border-color: var(--green); }
-.field input[aria-invalid="true"] { border-color: #a03a2a; background: #fff4f1; }
+.ml-subscribe-form .ml-field-group input:focus { outline: 3px solid rgba(47,106,77,.35); border-color: var(--green); }
 
-.field-check { display: grid; grid-template-columns: 22px 1fr; column-gap: 12px; align-items: start; }
-.field-check input { width: 20px; height: 20px; margin: 4px 0 0; accent-color: var(--green); }
-.field-check label { text-transform: none; letter-spacing: 0; font-size: .92rem; color: var(--ink); line-height: 1.5; }
-.field-check label a { color: var(--green); text-underline-offset: 3px; }
-.field-check .error { grid-column: 1 / -1; }
+.ml-subscribe-form .ml-form-checkboxRow label.checkbox { display: grid; grid-template-columns: 22px 1fr; column-gap: 12px; align-items: start; cursor: pointer; }
+.ml-subscribe-form .ml-form-checkboxRow input[type="checkbox"] { width: 20px; height: 20px; margin: 4px 0 0; accent-color: var(--green); }
+.ml-subscribe-form .ml-form-checkboxRow .label-description p { margin: 0; font-size: .92rem; color: var(--ink); line-height: 1.5; }
+.ml-subscribe-form .ml-form-checkboxRow .label-description a { color: var(--green); text-underline-offset: 3px; }
 
-.error { color: #a03a2a; font-size: .88rem; margin: 0; min-height: 0; }
-.error:empty { display: none; }
-.signup .btn { align-self: flex-start; background: var(--green); color: var(--cream); }
-.signup .btn:hover { background: var(--green-800); }
-.form-status { margin: 0; font-size: .98rem; color: var(--green-800); }
-.form-status:empty { display: none; }
-.form-status.is-success { padding: 14px 16px; background: rgba(47,106,77,.12); border-left: 4px solid var(--green); border-radius: 6px; }
+.ml-subscribe-form .ml-form-embedSubmit button.primary {
+  font: inherit; font-size: .85rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; cursor: pointer;
+  padding: 16px 30px; border: 0; border-radius: 999px; background: var(--green); color: var(--cream);
+}
+.ml-subscribe-form .ml-form-embedSubmit button.primary:hover { background: var(--green-800); }
+.ml-subscribe-form .ml-form-embedSubmit button.loading { align-items: center; gap: 8px; padding: 14px 30px; border: 0; border-radius: 999px; background: var(--green); color: var(--cream); }
+.ml-form-embedSubmitLoad { display: inline-block; width: 20px; height: 20px; }
+.ml-form-embedSubmitLoad::after { content: ""; display: block; width: 11px; height: 11px; margin: 1px; border-radius: 50%; border: 4px solid #fff; border-color: #fff #fff #fff transparent; animation: ml-spin 1.2s linear infinite; }
+@keyframes ml-spin { to { transform: rotate(360deg); } }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+/* Error state (MailerLite adds the class ml-error) */
+.ml-subscribe-form .ml-error input[type="email"], .ml-subscribe-form .ml-error input[type="text"] { border-color: #a03a2a; background: #fff4f1; }
+.ml-subscribe-form .ml-error label, .ml-subscribe-form .ml-error .label-description p { color: #a03a2a; }
+
+/* Success message */
+.ml-subscribe-form .ml-form-successBody { padding: 18px 20px; background: rgba(47,106,77,.12); border-left: 4px solid var(--green); border-radius: 6px; }
+.ml-subscribe-form .ml-form-successContent h4 { margin: 0 0 6px; font-family: var(--font-title); font-weight: 400; font-size: 1.5rem; color: var(--green); }
+.ml-subscribe-form .ml-form-successContent p { margin: 0; color: var(--green-800); }
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--green-900); color: rgba(244,234,222,.86); padding: 72px 0 28px; font-size: .95rem; }
@@ -261,7 +273,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .facts li { flex-direction: row; align-items: baseline; gap: 12px; }
   .story-visual::after { inset: 14px -8px -8px 14px; }
   .newsletter-box { padding: 36px 20px; border-radius: 18px; }
-  .signup .btn { width: 100%; text-align: center; }
+  .ml-subscribe-form .ml-form-embedSubmit button { width: 100%; }
   .footer-bottom { flex-direction: column; }
 }
 

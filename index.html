@@ -156,35 +156,75 @@
         </div>
 
         <!--
-          MAILERLITE PLACEHOLDER
-          This form is a demo and is NOT connected yet. It sends no data.
-          Later: replace this <form> with the embedded form code from MailerLite
-          (or point "action" to the MailerLite form URL) and keep the three fields:
-          name, email and consent.
-          Do not add an embed code here until it exists in my MailerLite account.
+          MAILERLITE FORM
+          Official embed code from my MailerLite account (form 203192176740402715).
+          The markup and class names are kept as MailerLite gives them, because
+          MailerLite's script (webforms.min.js, loaded at the bottom of the page)
+          validates and sends the form. The look is set in style.css.
+          I left out MailerLite's own CSS block so the form matches the Sucre Brûlé design.
         -->
-        <form class="signup" id="signup-form" action="#" method="post" novalidate data-mailerlite="placeholder">
-          <div class="field">
-            <label for="signup-name">First name</label>
-            <input type="text" id="signup-name" name="name" autocomplete="given-name" required>
-            <p class="error" id="error-name" role="alert"></p>
-          </div>
+        <div id="mlb2-48028399" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-48028399">
+          <div class="ml-form-embedWrapper embedForm">
 
-          <div class="field">
-            <label for="signup-email">Email address</label>
-            <input type="email" id="signup-email" name="email" autocomplete="email" required>
-            <p class="error" id="error-email" role="alert"></p>
-          </div>
+            <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+              <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2756659/forms/203192176740402715/subscribe" data-code="" method="post" target="_blank">
+                <div class="ml-form-formContent">
 
-          <div class="field field-check">
-            <input type="checkbox" id="signup-consent" name="consent" required>
-            <label for="signup-consent">I agree to receive the Sucre Brûlé newsletter and accept the <a href="#privacy">privacy information</a>. I can unsubscribe at any time.</label>
-            <p class="error" id="error-consent" role="alert"></p>
-          </div>
+                  <div class="ml-form-fieldRow">
+                    <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                      <label for="ml-email">Email</label>
+                      <input id="ml-email" aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="" autocomplete="email">
+                    </div>
+                  </div>
 
-          <button class="btn btn-primary" type="submit">Subscribe</button>
-          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-        </form>
+                  <div class="ml-form-fieldRow">
+                    <div class="ml-field-group ml-field-name">
+                      <label for="ml-name">Name</label>
+                      <input id="ml-name" aria-label="name" type="text" class="form-control" data-inputmask="" name="fields[name]" placeholder="" autocomplete="given-name">
+                    </div>
+                  </div>
+
+                  <div class="ml-form-fieldRow ml-last-item">
+                    <div class="ml-field-group ml-field-last_name">
+                      <label for="ml-last-name">Last name</label>
+                      <input id="ml-last-name" aria-label="last_name" type="text" class="form-control" data-inputmask="" name="fields[last_name]" placeholder="" autocomplete="family-name">
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="ml-form-checkboxRow ml-validate-required">
+                  <label class="checkbox">
+                    <input type="checkbox">
+                    <div class="label-description">
+                      <p>I agree to receive emails from Sucre Brûlé. <a href="#privacy">Privacy information</a></p>
+                    </div>
+                  </label>
+                </div>
+
+                <input type="hidden" name="ml-submit" value="1">
+
+                <div class="ml-form-embedSubmit">
+                  <button type="submit" class="primary">Subscribe</button>
+                  <button disabled="disabled" style="display: none;" type="button" class="loading">
+                    <div class="ml-form-embedSubmitLoad"></div>
+                    <span class="sr-only">Loading...</span>
+                  </button>
+                </div>
+
+                <input type="hidden" name="anticsrf" value="true">
+              </form>
+            </div>
+
+            <div class="ml-form-successBody row-success" style="display: none">
+              <div class="ml-form-successContent">
+                <h4>Thank you!</h4>
+                <p>You have successfully joined our subscriber list.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
     </section>
 
@@ -204,8 +244,8 @@
 
       <div class="privacy" id="privacy">
         <h2 class="footer-title">Privacy &amp; GDPR</h2>
-        <p>Sucre Brûlé is a fictional brand, created for a school project (Creative Automation, Arteveldehogeschool). This page does not collect or store any personal data: the newsletter form is a demo.</p>
-        <p>Once the form is connected to MailerLite, your name and email address would only be used to send the newsletter, and only with your consent. You can withdraw your consent and unsubscribe at any time. This page uses no cookies. Its title font is loaded from Google Fonts, so your browser contacts Google when the page loads.</p>
+        <p>Sucre Brûlé is a fictional brand, created for a school project (Creative Automation, Arteveldehogeschool). If you subscribe to the newsletter, your email address, first name and last name are sent to MailerLite, the email service used for this project. They are only used to send the newsletter, and only with your consent (the tick box).</p>
+        <p>You can unsubscribe at any time with the link at the bottom of every email. Our own code on this page sets no cookies. Its title font is loaded from Google Fonts and the subscribe form is loaded from MailerLite, so your browser contacts Google and MailerLite when the page loads.</p>
       </div>
     </div>
 
@@ -214,6 +254,19 @@
       <a href="#top">Back to top ↑</a>
     </div>
   </footer>
+
+  <!-- MailerLite form scripts (from the official embed code) -->
+  <script>
+    function ml_webform_success_48028399() {
+      var $ = ml_jQuery || jQuery;
+      $('.ml-subscribe-form-48028399 .row-success').show();
+      $('.ml-subscribe-form-48028399 .row-form').hide();
+    }
+  </script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
+  <script>
+    fetch("https://assets.mailerlite.com/jsonp/2756659/forms/203192176740402715/takel")
+  </script>
 
   <script src="script.js"></script>
 </body>
